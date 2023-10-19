@@ -18,6 +18,13 @@ spec:
       containers:
       - name: acmeair-flightservice-java
         image: acmeair-flightservice-java:latest
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
         ports:
           - containerPort: 9080
           - containerPort: 9443
@@ -127,7 +134,13 @@ spec:
         ports:
         - containerPort: 27017
           protocol: TCP
-        resources: {}
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            cpu: "2000m"
+            memory: "4Gi"
         volumeMounts:
           - name: acmeair-flight-db-1
             mountPath: /data/configdb
